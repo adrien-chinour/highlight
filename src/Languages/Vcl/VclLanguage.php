@@ -9,6 +9,7 @@ use Tempest\Highlight\Languages\Vcl\Patterns\VclFunctionCallPattern;
 use Tempest\Highlight\Languages\Vcl\Patterns\VclFunctionNamePattern;
 use Tempest\Highlight\Languages\Vcl\Patterns\VclKeywordPattern;
 use Tempest\Highlight\Languages\Vcl\Patterns\VclMultiLineCommentPattern;
+use Tempest\Highlight\Languages\Vcl\Patterns\VclOperatorPattern;
 use Tempest\Highlight\Languages\Vcl\Patterns\VclSingleLineCommentPattern;
 use Tempest\Highlight\Languages\Vcl\Patterns\VclVariablePattern;
 use Tempest\Highlight\Languages\Vcl\Patterns\VclDoubleQuoteValuePattern;
@@ -32,7 +33,6 @@ class VclLanguage extends BaseLanguage
             new VclKeywordPattern('vcl'),
             new VclKeywordPattern('import'),
             new VclKeywordPattern('backend'),
-            new VclKeywordPattern('probe'),
             new VclKeywordPattern('acl'),
             new VclKeywordPattern('set'),
             new VclKeywordPattern('unset'),
@@ -55,6 +55,15 @@ class VclLanguage extends BaseLanguage
             new VclVariablePattern('server'),
             new VclVariablePattern('sess'),
             new VclVariablePattern('storage'),
+
+            new VclOperatorPattern('='),
+            new VclOperatorPattern('=='),
+            new VclOperatorPattern('!='),
+            new VclOperatorPattern('~'),
+            new VclOperatorPattern('!~'),
+            new VclOperatorPattern('!'),
+            new VclOperatorPattern('&&'),
+            new VclOperatorPattern('||'),
         ];
     }
 }
