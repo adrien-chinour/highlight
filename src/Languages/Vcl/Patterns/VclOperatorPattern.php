@@ -6,21 +6,25 @@ namespace Tempest\Highlight\Languages\Vcl\Patterns;
 
 use Tempest\Highlight\IsPattern;
 use Tempest\Highlight\Pattern;
-use Tempest\Highlight\PatternTest;
 use Tempest\Highlight\Tokens\TokenTypeEnum;
 
-#[PatternTest(input: 'sub baz {', output: 'baz')]
-final readonly class VclFunctionNamePattern implements Pattern
+final readonly class VclOperatorPattern implements Pattern
 {
     use IsPattern;
 
+    public function __construct(private string $operator)
+    {
+    }
+
     public function getPattern(): string
     {
-        return 'sub\s(?<match>.+)\s\{';
+        $quoted = preg_quote($this->operator, '/');
+
+        return "/(?<match>{$quoted})/";
     }
 
     public function getTokenType(): TokenTypeEnum
     {
-        return TokenTypeEnum::PROPERTY;
+        return TokenTypeEnum::OPERATOR;
     }
 }
